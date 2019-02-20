@@ -1,1 +1,9 @@
-index 확인
+<html xmlns:th="http://www.thymeleaf.org">
+<a href="/memberInsert">회원가입</a>
+<div th:if="${session.id}==null">
+<a href="/login">로그인</a></div>
+
+<div th:if="${session.id} !=null">
+<span th:text ="${session.name}"></span>님
+<a href="/accountsetup">계좌개설</a>
+<a href="/logout">로그아웃</a></div>

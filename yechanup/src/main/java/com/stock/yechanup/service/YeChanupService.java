@@ -23,4 +23,11 @@ public class YeChanupService {
 		return getMember;
 		
 	}
+	//회원가입하는 메서드
+	public int addmember(Member member) {
+	//받은 member값을 콘솔창을 통해 확인
+		System.out.println(member + "<-member.addmember.YeChanupService");
+	//yeChanupMapper클래스안에 memberInsert메서드를 호출후 실행한 값 리턴	
+		return yeChanupMapper.memberInsert(member);
+	}
 }

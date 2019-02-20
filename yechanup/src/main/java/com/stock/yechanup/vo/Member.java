@@ -1,8 +1,5 @@
 package com.stock.yechanup.vo;
 
-import org.springframework.stereotype.Service;
-
-@Service
 public class Member {
 	private String memberId;
 	private String memberPw;
