@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ 
+<mapper namespace="com.stock.yechanup.mapper.YeChanupMapper">    
+
+   
+    <select id="userSelectOne" resultType="com.stock.yechanup.vo.Member">
+    <!-- 고객 한명을 조회하는 쿼리문 --> 
+        SELECT 
+            member_id as memberId, 
+            member_pw as memberPw 
+        FROM member
+        WHERE member_id = #{memberId}
+    </select>
+
+</mapper>
+
