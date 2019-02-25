@@ -4,20 +4,17 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.stock.yechanup.service.YeChanupService;
+import com.stock.yechanup.service.MemberService;
 import com.stock.yechanup.vo.Member;
 
 @Controller
-public class YeChanupController {
+public class MemberController {
 	@Autowired
-	YeChanupService yeChanupService;
-
-	
+	MemberService memberService;
 	
 	//get방식으로 login 이동 요청시 login메서드 실행
 	@GetMapping("login")
@@ -37,7 +34,7 @@ public class YeChanupController {
 		member.setMemberId(memberId);
 		member.setMemberPw(memberPw);
 	//YeChanupService객체 내 getUser메서드 호출시 member입력, 리턴된 값을 getMember에 복사	
-		Member getMember = yeChanupService.getUser(member);
+		Member getMember = memberService.getUser(member);
 		String memberName = getMember.getMemberName();
 	//콘솔창을 통해 getMember에 복사된 값을 확인.	
 		System.out.println(getMember + "<-getMember.login.YeChanupController");
@@ -77,7 +74,7 @@ public class YeChanupController {
 	//member객체 내에 memberName get메서드 호출
 		member.getMemberName();
 		//yeChanupService클래스 내에 addmember메서드 호출
-		yeChanupService.addmember(member);
+		memberService.addmember(member);
 	//index로 이동요청
 		return "redirect:/index";
 		

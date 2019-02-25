@@ -13,7 +13,7 @@ public class AccountService {
 @Autowired
 AccountMapper accountMapper;
 
-	
+//id를 입력하여 branchCode를 리턴하는 메서드 선언
 	public Member getBranchCode(String id) {
 		System.out.println("id.getBranchCode.AccountService : " + id);
 		
@@ -21,13 +21,14 @@ AccountMapper accountMapper;
 		System.out.println("member.getBranchCode.AccountService : " + member);
 		return member;
 	}
-	
+//branchCode를 입력하여 계좌개설지점 및 계좌담당자를 리턴하는 메서드 선언	
 	public Branch getBranch(String branchCode) {
 		Branch branch = accountMapper.selectBranch(branchCode);
 		return branch;
 	}
 	
-	public void insertAccount(Account account, String branchCode) {
+//지점코드 + 종목코드 + 일련번호 = 계좌번호 처리과정 후 계좌를 생성하는 메서드 선언
+	public Account insertAccount(Account account, String branchCode) {
 		System.out.println("account.insertAccount.AccountService : " + account);
 		System.out.println("branchCode.insertAccount.AccountService : " + branchCode);
 		String categoryCode = null;
@@ -41,9 +42,9 @@ AccountMapper accountMapper;
 		int max = accountMapper.selectAccountMax();
 		max = max + 1;
 		String yechan = "000"; 
-		if(max >= 0 && max < 9) {
+		if(max >= 0 && max < 10) {
 			yechan = "000";
-		} else if(max > 8 && max < 99) {
+		} else if(max > 9 && max < 100) {
 			yechan = "00";
 		} else {
 			yechan = "0";
@@ -54,6 +55,7 @@ AccountMapper accountMapper;
 		System.out.println("accountNumber.insertAccount.AccountService : " + accountNumber);
 		account.setAccountNumber(accountNumber);
 		System.out.println("account.insertAccount.AccountService : " + account);
-		
+		accountMapper.insertAccount(account);
+		return account;
 	}
 }

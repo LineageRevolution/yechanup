@@ -2,34 +2,35 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- 
 <mapper namespace="com.stock.yechanup.mapper.AccountMapper">    
- <select id="selectBranchCode" parameterType="String" resultType="com.stock.yechanup.vo.Member">
-    <!-- --> 
+	<select id="selectBranchCode" parameterType="String" resultType="com.stock.yechanup.vo.Member">
+<!-- branchCode를 조회하는 SELECT쿼리문--> 
         SELECT 
-            member_id as memberId
-            ,member_pw as memberPw
-            ,member_name as memberName
-            ,branch_code as branchCode
+            branch_code as branchCode
         FROM member
         WHERE member_id = #{memberId}
     </select>
- <select id="selectBranch" parameterType="String" resultType="com.stock.yechanup.vo.Branch">
-    <!-- --> 
+	<select id="selectBranch" parameterType="String" resultType="com.stock.yechanup.vo.Branch">
+<!-- 계좌개설지점과 계좌담당자를 조회하는 SELECT쿼리문 --> 
         SELECT 
             branch_name as branchName
             ,branch_manager as branchManager
         FROM branch
         WHERE branch_code = #{branchCode}
     </select>
- <select id="selectAccountMax"  resultType="int">
-    <!-- --> 
+	<select id="selectAccountMax"  resultType="int">
+<!-- 계좌번호 6자리 부분부터 해당되는 일련번호의 최고값을 추출하는 SELECT문--> 
         SELECT 
         	max(substr(account_number, 6)) 
         FROM account;
     </select>
+ <!-- 계좌를 입력하는 insert쿼리문 -->
+ <insert id="insertAccount" parameterType="com.stock.yechanup.vo.Account">
+ 		INSERT INTO account(
+ 			account_number, member_id, account_name, account_deposit, account_setup, account_manager
+ 		)
+ 		VALUES(#{accountNumber}, #{memberId}, #{accountName}, #{accountDeposit}, #{accountSetup}, #{accountManager})
  
-
+ </insert>
 
 </mapper>
