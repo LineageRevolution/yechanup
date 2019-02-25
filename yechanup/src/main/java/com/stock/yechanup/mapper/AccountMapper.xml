@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ 
+<mapper namespace="com.stock.yechanup.mapper.AccountMapper">    
+ <select id="selectBranchCode" parameterType="String" resultType="com.stock.yechanup.vo.Member">
+    <!-- --> 
+        SELECT 
+            member_id as memberId
+            ,member_pw as memberPw
+            ,member_name as memberName
+            ,branch_code as branchCode
+        FROM member
+        WHERE member_id = #{memberId}
+    </select>
+ <select id="selectBranch" parameterType="String" resultType="com.stock.yechanup.vo.Branch">
+    <!-- --> 
+        SELECT 
+            branch_name as branchName
+            ,branch_manager as branchManager
+        FROM branch
+        WHERE branch_code = #{branchCode}
+    </select>
+ <select id="selectAccountMax"  resultType="int">
+    <!-- --> 
+        SELECT 
+        	max(substr(account_number, 6)) 
+        FROM account;
+    </select>
+ 
+
+
+</mapper>

@@ -18,6 +18,7 @@ public class YeChanupController {
 	YeChanupService yeChanupService;
 
 	
+	
 	//get방식으로 login 이동 요청시 login메서드 실행
 	@GetMapping("login")
 	public String login() {
