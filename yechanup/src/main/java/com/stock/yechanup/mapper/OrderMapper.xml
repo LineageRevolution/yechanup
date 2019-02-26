@@ -8,7 +8,8 @@
  	<select id="selectAccount" parameterType="String" resultType="com.stock.yechanup.vo.Account">
     <!-- 고객 한명을 조회하는 쿼리문 --> 
         SELECT 
-            account_number as accountNumber            
+            account_number as accountNumber
+            ,account_deposit as accountDeposit            
         FROM account
         WHERE member_id = #{id}
     </select>
@@ -31,4 +32,28 @@
     		,#{orderMoney}   		
     	)	
     </insert>
+    <select id="selectOrder" resultType="com.stock.yechanup.vo.Order">
+    <!-- 고객 한명을 조회하는 쿼리문 --> 
+        SELECT
+        order_date as orderDate
+        ,order_number as orderNumber
+        ,account_number as accountNumber
+        ,member_id as memberId
+        ,category_code as categoryCode
+        ,order_amount as orderAmount
+        ,order_money as orderMoney
+        FROM orderbyday order by order_date desc
+    </select>
+    <select id="selectAccountDeposit" parameterType="string" resultType="com.stock.yechanup.vo.Account">
+    <!-- 고객 한명을 조회하는 쿼리문 --> 
+        SELECT
+        	account_deposit as accountDeposit
+        FROM
+        	account
+        WHERE
+         	account_number = #{accountNumber}	
+    </select>
+   
+   
+    
 </mapper>

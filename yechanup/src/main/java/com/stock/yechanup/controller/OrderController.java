@@ -37,8 +37,11 @@ public class OrderController {
 	public String orderAccount(@RequestParam("accountNumber") String accountNumber, Model model) {
 		System.out.println("accountNumber.orderInsert.OrderController : " + accountNumber);
 		String substrAccountNumber = orderService.getCategoryCode(accountNumber);
+		Account account = orderService.getAccountDeposit(accountNumber);
+		System.out.println("account.orderInsert.OrderController : " + account);
 		model.addAttribute("substrAccountNumber", substrAccountNumber);
 		model.addAttribute("accountNumber", accountNumber);
+		model.addAttribute("account", account);
 		return "orderCount";
 	}
 //post방식으로 orderCount이동요청시 orderCount메서드 실행, 화면에 입력된 값들을 Order객체 내부에 세팅, session영역에 세팅된 id값을 Order객체에 세팅하고 
@@ -49,12 +52,16 @@ public class OrderController {
 		System.out.println("orderAmount.orderCount.OrderController : " + order.getOrderAmount());
 		System.out.println("accountNumber.orderCount.OrderController : " + order.getAccountNumber());
 		order.setMemberId((String)session.getAttribute("id"));
+		
 		orderService.addOrder(order);
+		
 		return "redirect:/orderListByDay";
 	}
 //get방식으로 orderListByDay이동요청시 orderListByDay메서드 실행, forward방식으로 orderListByDay.html화면 출력.	
 	@GetMapping("orderListByDay")
-	public String orderListByDay() {
+	public String orderListByDay(Model model) {
+		List<Order> listOrder = orderService.getOrder();
+		model.addAttribute("listOrder", listOrder);
 		return "orderListByDay";
 	}
 }

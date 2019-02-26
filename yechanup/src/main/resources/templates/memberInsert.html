@@ -1,3 +1,21 @@
+<html xmlns:th= "http://www.thymeleaf.org">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+				<script>
+					$(document).ready(function(){
+				        $('#memberbtn').click(function(){
+				        	$('#memberAddForm').submit(function(event){
+				        		if($('#memberPw').val().length<8){
+					            	$('#memberPw').attr('placeholder','8자리이상 입력해주세요.');
+					            	$('#memberPw').focus();
+					            	return false;
+					            }
+				        	});
+				        });
+				    });
+				</script>
+				</head>
+				<body>
 <form id="memberAddForm" action = "/memberInsert" method="post">
 아이디:<input id="memberId" type="text" name="memberId"><br>
 비밀번호 :<input id="memberPw" type="text" name="memberPw"><br>
@@ -12,3 +30,4 @@
 <br>
 <input id="memberbtn" type="submit" value="회원가입양식제출">
 </form>
+</body>

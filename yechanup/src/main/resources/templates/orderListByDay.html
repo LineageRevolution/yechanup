@@ -1,2 +1,27 @@
 <html xmlns:th= "http://www.thymeleaf.org">
-asdf
+<div class="container">
+	<table class="table table-striped table-dark">
+  		<thead class="thead-dark">
+			<tr>
+				<td>orderDate</td>
+				<td>orderNumber</td>
+				<td>accountNumber</td>
+				<td>memberId</td>
+				<td>categoryCode</td>
+				<td>orderAmount</td>
+				<td>orderMoney</td>
+			</tr>
+			</thead>
+			<tbody>
+			<!-- map안의 list를 가져와서 사용 -->
+			 <tr th:each="s : ${listOrder}">
+				<td th:text="${s.orderDate}"></td>
+				<td th:text="${s.orderNumber}"></td>
+				<td th:text="${s.accountNumber}"></td>
+				<td th:text="${s.memberId}"></td>
+				<td th:text="${s.categoryCode}"></td>
+				<td th:text="${s.orderAmount}"></td>
+				<td th:text="${s.orderMoney}"></td>
+			</tr>
+		</tbody>
+	</table>

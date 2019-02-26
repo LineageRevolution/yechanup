@@ -39,4 +39,16 @@ public class OrderService {
 		order.setOrderMoney(orderMoney);
 		orderMapper.orderInsert(order);
 	}
+	public List<Order> getOrder() {
+		List<Order> listOrder = orderMapper.selectOrder();
+		System.out.println("listOrder.getOrder.OrderService"+ listOrder);
+		return listOrder;
+	
+	}
+	public Account getAccountDeposit(String accountNumber) {
+		Account account = orderMapper.selectAccountDeposit(accountNumber);
+		return account;
+	}
+		
+	
 }

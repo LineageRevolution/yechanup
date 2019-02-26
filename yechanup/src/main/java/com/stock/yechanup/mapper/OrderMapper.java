@@ -13,4 +13,8 @@ public interface OrderMapper {
 	List<Account> selectAccount(String id);
 //주문을 입력하는 메서드 선언	
 	void orderInsert(Order order);
+	
+	List<Order> selectOrder();
+	
+	Account selectAccountDeposit(String accountNumber);
 }

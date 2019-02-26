@@ -1,6 +1,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
-
-<form action = "accountSetup" method="post">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+				<script>
+					$(document).ready(function(){
+				        $('#accountBtn').click(function(){
+				        	$('#accountSetup').submit(function(event){
+				        		if($('#accountDeposit').val().length<6){
+					            	$('#Deposit').text('10만원이상 입력해주세요.');
+					            	$('#accountDeposit').focus();
+					            	return false;
+					            }
+				        	});
+				        });
+				    });
+				</script>
+				</head>
+<form id="accountSetup" action = "accountSetup" method="post">
 <input type="hidden" name="branchCode" th:value="${member.branchCode}" readonly> <br>
 회원ID : <input type="text" name="memberId" th:value="${session.id}" readonly> <br>
 계좌명 : <select name="accountName">
@@ -14,8 +29,8 @@
 		<option value="008">008</option>
 		<option value="009">009</option>
 	</select> <br>
-예수금 : <input type="text" name="accountDeposit"> <br>
+예수금 : <input id="accountDeposit" type="text" name="accountDeposit"><span id="Deposit"></span><br>
 계좌개설 지점 :  <input type="text" name="accountSetup" th:value="${branch.branchName}" readonly> <br>
 계좌담당자 :  <input type="text" name="accountManager" th:value="${branch.branchManager}" readonly> <br>
-<input type="submit" value="계좌개설">
+<input id="accountBtn" type="submit" value="계좌개설">
 </form>
