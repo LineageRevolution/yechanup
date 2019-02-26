@@ -1,0 +1,11 @@
+<html xmlns:th= "http://www.thymeleaf.org">
+
+<!-- 아이디에 해당하는 계좌목록을 보여주고 계좌 선택시 post방식으로 orderAccount로 이동요청 -->
+<form action = "/orderAccount" method="post">
+계좌번호 : <select name="accountNumber">
+	<div th:each = "s : ${listAccount}">
+		<option th:value = "${s.accountNumber}"><span th:text = "${s.accountNumber}"></span></option>	
+	</div>
+</select>
+<input type="submit" value="계좌선택완료">
+</form>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ 
+<mapper namespace="com.stock.yechanup.mapper.OrderMapper">    
+ 	<select id="selectAccount" parameterType="String" resultType="com.stock.yechanup.vo.Account">
+    <!-- 고객 한명을 조회하는 쿼리문 --> 
+        SELECT 
+            account_number as accountNumber            
+        FROM account
+        WHERE member_id = #{id}
+    </select>
+    <insert id="orderInsert" parameterType="com.stock.yechanup.vo.Order">
+    	INSERT INTO
+    		orderbyday(
+    		order_date
+    		,account_number
+    		,member_id
+    		,category_code
+    		,order_amount
+    		,order_money   		
+    		)   		
+    	VALUES(
+    		now()
+    		,#{accountNumber}
+    		,#{memberId}
+    		,#{categoryCode}
+    		,#{orderAmount}
+    		,#{orderMoney}   		
+    	)	
+    </insert>
+</mapper>

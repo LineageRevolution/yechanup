@@ -1,0 +1,20 @@
+<html xmlns:th= "http://www.thymeleaf.org">
+<!-- 선택된 계좌 별 출력되는 종목코드에 대한 수량 입력 -->
+<form action = "/orderCount" method="post">
+<div th:if = "${substrAccountNumber} == 01">
+<input type ="hidden" name="categoryCode" value="01">
+종목코드 01 금일 가격 : 10,000원
+</div>
+<div th:if = "${substrAccountNumber} == 02">
+<input type ="hidden" name="categoryCode" value="02">
+종목코드 02 금일 가격 : 20,000원
+</div>
+<div th:if = "${substrAccountNumber} == 03">
+<input type ="hidden" name="categoryCode" value="03">
+종목코드 03 금일 가격 : 30,000원
+</div>
+수량 : <input type="text" name="orderAmount">
+<input type="hidden" name="accountNumber" th:value="${accountNumber}">
+<input type="submit" value="수량선택완료">
+
+</form>
