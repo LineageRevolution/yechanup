@@ -1,6 +1,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SB Admin 2 - Register</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+				
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 				<script>
 					$(document).ready(function(){
 				        $('#accountBtn').click(function(){
@@ -14,23 +31,70 @@
 				        });
 				    });
 				</script>
-				</head>
-<form id="accountSetup" action = "accountSetup" method="post">
-<input type="hidden" name="branchCode" th:value="${member.branchCode}" readonly> <br>
-회원ID : <input type="text" name="memberId" th:value="${session.id}" readonly> <br>
-계좌명 : <select name="accountName">
-		<option value="001">001</option>
-		<option value="002">002</option>
-		<option value="003">003</option>
-		<option value="004">004</option>
-		<option value="005">005</option>
-		<option value="006">006</option>
-		<option value="007">007</option>
-		<option value="008">008</option>
-		<option value="009">009</option>
-	</select> <br>
-예수금 : <input id="accountDeposit" type="text" name="accountDeposit"><span id="Deposit"></span><br>
-계좌개설 지점 :  <input type="text" name="accountSetup" th:value="${branch.branchName}" readonly> <br>
-계좌담당자 :  <input type="text" name="accountManager" th:value="${branch.branchManager}" readonly> <br>
-<input id="accountBtn" type="submit" value="계좌개설">
-</form>
+</head>
+<body class="bg-gradient-primary">
+<div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">계좌개설</h1>
+              </div>
+              <form id="accountSetup" action="accountSetup" method="post" class="user">
+                
+                <div class="form-group">
+                  <input type="hidden"  name="branchCode" th:value="${member.branchCode}" readonly> <br>
+                </div>
+                <div class="col-sm-6">
+               	  ID<input type="text" class="form-control form-control-user" name="memberId" th:value="${session.id}" placeholder="ID" readonly> <br>
+                </div>
+                <div class="form-group">
+				  계좌명 : <select  name="accountName" >
+						<option value="001">1종목:001계좌</option>
+						<option value="002">1종목:002계좌</option>
+						<option value="003">1종목:003계좌</option>
+						<option value="004">2종목:004계좌</option>
+						<option value="005">2종목:005계좌</option>
+						<option value="006">2종목:006계좌</option>
+						<option value="007">3종목:007계좌</option>
+						<option value="008">3종목:008계좌</option>
+						<option value="009">3종목:009계좌</option>
+					</select> <br>
+                </div>
+                <div class="form-group">
+                                    
+                                    예수금 입력 : <span id="Deposit"></span> <input id="accountDeposit" class="form-control form-control-user" type="text" name="accountDeposit" placeholder="10만원이상 입력하세요"><br>
+                
+                </div>
+               
+                <div class="form-group">
+               	  계좌개설 지점<input type="text" class="form-control form-control-user" name="accountSetup" th:value="${branch.branchName}" readonly> <br>
+                </div>
+                <div>
+                                      계좌담당자<input type="text" class="form-control form-control-user" name="accountManager" th:value="${branch.branchManager}" readonly> <br>
+                </div>
+                <input type="submit" id="accountBtn" class="btn btn-primary btn-user btn-block" value="Register Account">
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+</body>

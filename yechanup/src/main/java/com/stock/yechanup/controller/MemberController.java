@@ -37,7 +37,7 @@ public class MemberController {
 		Member getMember = memberService.getUser(member);
 		String memberName = getMember.getMemberName();
 	//콘솔창을 통해 getMember에 복사된 값을 확인.	
-		System.out.println(getMember + "<-getMember.login.YeChanupController");
+		System.out.println(getMember + "<-getMember.login.MemberController");
 	//화면에 입력된 값이 DB에 세팅된 값과 동일하면 로그인 성공.	
 		if(memberId.equals(getMember.getMemberId()) && memberPw.equals(getMember.getMemberPw())) {			
 	//로그인 성공이면 session영역에 세팅		
@@ -48,14 +48,14 @@ public class MemberController {
 			return "redirect:/index";
 		} else {
 	//화면에 입력된 값과 DB에 세팅된 값이 일치하지 않으면 login으로 이동 요청		
-			return "redirect:/login";
+			return "redirect:/index";
 		}
 	}
 	//get방식으로 memberInsert 이동 요청시 memberInsert메서드 실행 
 	@GetMapping("memberInsert")
 	public String memberInsert() {
 	//memberInsert메서드 실행되는지 콘솔창에 출력
-		System.out.println("memberInsert메서드 실행?");
+		System.out.println("memberInsert메서드 실행");
 	//memberInsert.html 화면 출력
 		return "memberInsert";
 	}

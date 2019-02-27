@@ -1,9 +1,23 @@
 <html xmlns:th= "http://www.thymeleaf.org">
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
 				<script>
+				
 					$(document).ready(function(){
-				        $('#memberbtn').click(function(){
+				        $('#memberBtn').click(function(){
 				        	$('#memberAddForm').submit(function(event){
 				        		if($('#memberPw').val().length<8){
 					            	$('#memberPw').attr('placeholder','8자리이상 입력해주세요.');
@@ -15,19 +29,65 @@
 				    });
 				</script>
 				</head>
-				<body>
-<form id="memberAddForm" action = "/memberInsert" method="post">
-아이디:<input id="memberId" type="text" name="memberId"><br>
-비밀번호 :<input id="memberPw" type="text" name="memberPw"><br>
-이름 :<input id="memberName" type="text" name="memberName"><br>
-주소 :<input id="memberAddress" type="text" name="memberAddress"><br>
-전화번호 :<input id="memberPhone" type="text" name="memberPhone"><br>
-지점코드 :<select name="branchCode">
-	   	<option value="001">1팀(001)
-	   	<option value="002">2팀(002)
-		<option value="003">3팀(003)
-	   </select>
-<br>
-<input id="memberbtn" type="submit" value="회원가입양식제출">
-</form>
+				<body class="bg-gradient-primary">
+				<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+              </div>
+              <form class="user" action="memberInsert" method="post">
+                
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-user" name="memberId" id="memberId" placeholder="ID">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control form-control-user" name="memberPw" id="memberPw" placeholder="PASSWORD">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-user" name="memberName"  id="memberName" placeholder="NAME">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-user" name="memberAddress"  id="memberAddress" placeholder="ADDRESS">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-user" name="memberId"  id="memberPhone" placeholder="PHONE">
+                </div>
+                <div class="col-sm-6">
+                <select name="branchCode">
+                	<option value="001">호성동(001)
+                	<option value="002">인후동(002)
+                	<option value="003">서신동(003)
+                </select>
+                </div>
+                <input type="submit" id="memberBtn" class="btn btn-primary btn-user btn-block" >
+                
+              </form>
+              <hr> 
+              <div class="text-center">
+                <a class="small" href="login">Already have an account? Login!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
 </body>
